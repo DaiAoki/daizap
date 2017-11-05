@@ -34,6 +34,7 @@ gem 'meta-tags'
 gem 'breadcrumbs_on_rails'
 gem 'draper'
 gem 'kaminari', github: 'amatsuda/kaminari'
+gem 'kakurenbo-puti' # https://github.com/alfa-jpn/kakurenbo-puti
 
 group :development, :test do
   gem 'pry'
