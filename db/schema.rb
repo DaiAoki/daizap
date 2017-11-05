@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105132327) do
+ActiveRecord::Schema.define(version: 20171105142751) do
 
   create_table "auth_informations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "login_id"
@@ -29,11 +29,12 @@ ActiveRecord::Schema.define(version: 20171105132327) do
     t.integer  "user_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "type"
     t.index ["user_id"], name: "index_records_on_user_id", using: :btree
   end
 
   create_table "user_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "type",       default: 0
+    t.integer  "image_type", default: 0
     t.string   "image"
     t.integer  "user_id"
     t.datetime "created_at",             null: false
@@ -55,7 +56,7 @@ ActiveRecord::Schema.define(version: 20171105132327) do
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                          null: false
     t.string   "handle_name",                   null: false
-    t.integer  "type",              default: 1
+    t.integer  "role",              default: 1
     t.datetime "soft_destroyed_at"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false

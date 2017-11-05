@@ -14,6 +14,7 @@ gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'haml-rails'
 gem 'erb2haml'
+gem 'autoprefixer-rails'
 
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
@@ -39,6 +40,8 @@ gem 'kakurenbo-puti' # https://github.com/alfa-jpn/kakurenbo-puti
 group :development, :test do
   gem 'pry'
   gem 'byebug', platform: :mri
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development do
