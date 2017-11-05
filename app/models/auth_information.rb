@@ -1,0 +1,2 @@
+class AuthInformation < ApplicationRecord
+end
