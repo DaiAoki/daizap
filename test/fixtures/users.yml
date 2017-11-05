@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  handle_name: MyString
+  type: 1
+  soft_destroyed_at: 2017-11-05 21:48:19
+
+two:
+  name: MyString
+  handle_name: MyString
+  type: 1
+  soft_destroyed_at: 2017-11-05 21:48:19
