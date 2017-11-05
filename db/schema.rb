@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105132131) do
+ActiveRecord::Schema.define(version: 20171105132327) do
 
   create_table "auth_informations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "login_id"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20171105132131) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["user_id"], name: "index_auth_informations_on_user_id", using: :btree
+  end
+
+  create_table "records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "image"
+    t.decimal  "weight",     precision: 10
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["user_id"], name: "index_records_on_user_id", using: :btree
   end
 
   create_table "user_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -54,6 +63,7 @@ ActiveRecord::Schema.define(version: 20171105132131) do
   end
 
   add_foreign_key "auth_informations", "users"
+  add_foreign_key "records", "users"
   add_foreign_key "user_images", "users"
   add_foreign_key "user_informations", "users"
 end
