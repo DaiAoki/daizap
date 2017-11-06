@@ -5,4 +5,6 @@ class User < ApplicationRecord
   has_many :user_images,      dependent: :destroy
 
   enum role: { admin: 0, user: 1 }
+
+  accepts_nested_attributes_for :auth_information
 end

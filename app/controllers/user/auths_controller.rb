@@ -1,11 +1,16 @@
 class User::AuthsController < User::ApplicationController
 
   def register
-    # TODO
+    @user = User.new
+    @user.build_auth_information
   end
 
   def register_do
-    # TODO
+    @user = User.create(user_params)
+    @user.save!
+    redirect_to hoge_path, notice: 'Success'    # TODO
+  rescue ActiveRecord::RecordInvalid
+    redirect_to :back, alert: 'Failuer'
   end
 
   def login
@@ -16,12 +21,9 @@ class User::AuthsController < User::ApplicationController
     auth = AuthInformation.find_by(login_id: auth_params[:login_id])
     if auth && auth.authenticate(auth_params[:password])
       session[:user_id] = auth.user_id
-      flash.now.notice = "Success"
-      redirect_to hoge_path    # TODO
+      redirect_to hoge_path, notice: 'Success'    # TODO
     else
-      @auth = AuthInformation.new
-      flash.now.alert = "Failure"
-      render :login
+      redirect_to :back, alert: 'Failuer'
     end
   end
 
@@ -31,5 +33,14 @@ class User::AuthsController < User::ApplicationController
 
     def auth_params
       params.require(:auth_information).permit(:login_id, :password, :password_confirmation)
+    end
+
+    def user_params
+      params.require(:user).permit(
+        :name, :handle_name, :role,
+        auth_information_attributes: [
+          :login_id, :password, :password_confirmation, :secret_question, :secret_answer, :user_id
+        ]
+      )
     end
 end

@@ -2,7 +2,9 @@
 class Record < ApplicationRecord
   belongs_to :user
 
-  def sibling
+  enum type: { weight: 'Record::Weight', image: 'Record::Image' }
+
+  def brothers
     Record.where(user_id: self.user_id)
   end
 end
