@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
 
   scope module: :user do
-    controller :auths, only: %w(), trailing_slash: true do
+    controller :auths, trailing_slash: true do
       get  :register
       post :register_do
       get  :login
       post :login_do
+    end
+
+    resources :contributes, only: %w(index), trailing_slash: true do
     end
   end
 
   scope module: :admin do
   end
 
-  root 'auths#login'
+  root 'user/contributes#index'
 end
