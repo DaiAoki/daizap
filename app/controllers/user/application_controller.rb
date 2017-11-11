@@ -7,7 +7,7 @@ class User::ApplicationController < ApplicationController
   private
 
     def set_view_path
-      path = Rails.root.join('app/views/user')
-      prepend_view_path(path)
+      devise = request.smart_phone? ? 'sp' : 'pc'
+      prepend_view_path Rails.root.join('app/views/user').join(devise)
     end
 end
