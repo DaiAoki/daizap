@@ -1,0 +1,25 @@
+= form_for @user, url: register_do_path, method: :post do |f|
+  .field
+    = f.label :name, 'Name'
+    = f.text_field :name
+  .field
+    = f.label :handle_name, 'HN'
+    = f.text_field :handle_name
+  = f.fields_for :auth_information do |auth|
+    .field
+      = auth.label :login_id, 'LoginID'
+      = auth.text_field :login_id
+    .field
+      = auth.label :password, 'Password'
+      = auth.password_field :password
+    .field
+      = auth.label :password_confirmation, 'Password(Confirmation)'
+      = auth.password_field :password_cofirmation
+    .field
+      = auth.label :secret_question, 'SecretQuestion'
+      = auth.text_field :secret_question
+    .field
+      = auth.label :secret_answer, 'SecretAnswer'
+      = auth.text_field :secret_answer
+  .actions
+    = f.submit 'Register'

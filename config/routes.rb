@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   scope module: :admin do
   end
+
+  root 'auths#login'
 end

@@ -1,13 +1,2 @@
 %h1 Login
-= form_for @auth, url: login_do_path, method: :post do |f|
-  .field
-    = f.label :login_id, 'LoginID'
-    = f.text_field :login_id
-  .field
-    = f.label :password, 'Password'
-    = f.password_field :password
-  .field
-    = f.label :password_confirmation, 'Password(confirmation)'
-    = f.password_field :password_confirmation
-  .actions
-    = f.submit 'Login'
+= render 'user/auths/partial/login_form', auth: @auth
