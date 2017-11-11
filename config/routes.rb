@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
     resources :contributes, only: %w(index), trailing_slash: true do
     end
+
+    resources :records, trailing_slash: true do
+    end
   end
 
   scope module: :admin do
