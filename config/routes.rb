@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     end
   end
 
-  scope module: :admin do
+  namespace :admin do
+  end
+
+  namespace :playground do
+    resources :samples
   end
 
   root 'user/contributes#index'

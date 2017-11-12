@@ -1,0 +1,11 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Daizap
+    = csrf_meta_tags
+    = stylesheet_link_tag    'playground/application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'playground/application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'react/application', 'data-turbolinks-track': 'reload'
+  %body
+    = yield
