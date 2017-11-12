@@ -4,7 +4,8 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Daizap
     = csrf_meta_tags
-    = stylesheet_link_tag    'user/application/pc', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'user/application/pc', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'user/pc/application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'user/pc/application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'react/application', 'data-turbolinks-track': 'reload'
   %body
     = yield

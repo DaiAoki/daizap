@@ -8,6 +8,7 @@ class User::AuthsController < User::ApplicationController
   def register_do
     @user = User.create(user_params)
     @user.save!
+    session[:user_id] = @user.id
     redirect_to hoge_path, notice: 'Success'    # TODO
   rescue ActiveRecord::RecordInvalid
     redirect_to :back, alert: 'Failuer'

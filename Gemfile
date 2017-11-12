@@ -36,6 +36,7 @@ gem 'breadcrumbs_on_rails'
 gem 'draper'
 gem 'kaminari', github: 'amatsuda/kaminari'
 gem 'kakurenbo-puti' # https://github.com/alfa-jpn/kakurenbo-puti
+gem 'react-rails'
 
 group :development, :test do
   gem 'pry'
