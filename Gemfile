@@ -37,6 +37,7 @@ gem 'draper'
 gem 'kaminari', github: 'amatsuda/kaminari'
 gem 'kakurenbo-puti' # https://github.com/alfa-jpn/kakurenbo-puti
 gem 'react-rails'
+gem 'marked-rails'
 
 group :development, :test do
   gem 'pry'

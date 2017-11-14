@@ -133,6 +133,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
+    marked-rails (0.3.2.0)
     meta-tags (2.6.0)
       actionpack (>= 3.2.0, < 5.3)
     method_source (0.9.0)
@@ -251,6 +252,7 @@ DEPENDENCIES
   kakurenbo-puti
   kaminari!
   listen (~> 3.0.5)
+  marked-rails
   meta-tags
   mysql2 (>= 0.3.18, < 0.5)
   pry
