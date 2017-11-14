@@ -18,6 +18,12 @@ Rails.application.routes.draw do
   namespace :admin do
   end
 
+  namespace :api, format: 'json' do
+    namespace :v1 do
+      resources :comments
+    end
+  end
+
   namespace :playground do
     resources :samples
   end

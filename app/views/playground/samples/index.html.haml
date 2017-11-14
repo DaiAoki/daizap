@@ -1,2 +1,3 @@
 %h1 ReactPlayground
-= react_component('CommentBox',data:[{author: "Pete Hunt", text: "This is one comment"}, {author: "Jordan Walke", text: "This is *another* comment"}])
+-# CommentBoxにおいては、urlがpropsで、WebAPIで取得したデータはstateとなる
+= react_component('CommentBox', url: '/api/v1/comments.json', pollInterval: 2000)
