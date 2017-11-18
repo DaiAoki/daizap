@@ -40,7 +40,10 @@ gem 'react-rails'
 gem 'marked-rails'
 
 group :development, :test do
+  gem 'hirb'
+  gem 'hirb-unicode'
   gem 'pry'
+  gem 'pry-rails'
   gem 'byebug', platform: :mri
   gem 'better_errors'
   gem 'binding_of_caller'
