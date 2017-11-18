@@ -6,6 +6,7 @@ class User::RecordsController < User::ApplicationController
   end
 
   def new
+    @records = Record.all
     @record = Record.new
   end
 
