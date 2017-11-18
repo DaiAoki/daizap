@@ -8,6 +8,7 @@ module Daizap
   class Application < Rails::Application
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
+    config.paths.add 'config/routes', eager_load: true
 
     config.assets.precompile << 'admin/application.scss'
     config.assets.precompile << 'user/pc/application.scss'
