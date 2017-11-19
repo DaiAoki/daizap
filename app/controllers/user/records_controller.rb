@@ -6,6 +6,8 @@ class User::RecordsController < User::ApplicationController
   end
 
   def new
+    # Countermeasure: 204 No Content
+    @hoge = Record.new
   end
 
   def create
