@@ -1,15 +1,37 @@
 var RecordBox = createReactClass({
   getInitialState: function() {
     //this function is called when create component
-    return {records: this.props.records};
+    //return {records: this.props.records}; recordsが不要になる!!!
+    return { records: [], isLoading: true };
   },
   componentDidMount: function() {
     //this function is called when first render
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      cache: false,
+      success: function(records) {
+        this.setState({ records: records, isLoading: false });
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
   },
   handleRecordSubmit: function(record) {
-    record.id = new Date();
-    var newRecords = this.state.records.concat(record);
-    this.setState({ records: newRecords });
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      type: 'POST',
+      data: record,
+      success: function(record) {
+        var newRecords = this.state.records.concat(record);
+        this.setState({ records: newRecords });
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
   },
   render: function() {
     var recordItems = this.state.records.map(function(rec) {
@@ -20,6 +42,7 @@ var RecordBox = createReactClass({
       );
     });
     if(this.state.isLoading) {
+      //MEMO: if I dislike this display, I should implement by server-side rendering.
       return (
         <div>Loading Now...</div>
       );
@@ -33,7 +56,6 @@ var RecordBox = createReactClass({
     }
   }
 });
-// The unit of record is day. => should change below
 var RecordItem = createReactClass({
   render: function() {
     return (
