@@ -10,16 +10,9 @@ var RecordBox = createReactClass({
     var recordItems = this.state.records.map(function(rec) {
       //MEMO: Enable show content of object
       //alert(JSON.stringify(rec));
-      if (rec.weight) {
-        return (
-          <RecordItemWeight id={rec.user_id} weight={rec.weight}/>
-        );
-      } else if (rec.image) {
-        return (
-          <RecordItemImage id={rec.user_id} image={rec.image}/>
-        );
-      } else {
-      }
+      return (
+        <RecordItem id={rec.user_id} weight={rec.weight} image={rec.image}/>
+      );
     });
     if(this.state.isLoading) {
       return (
@@ -35,22 +28,14 @@ var RecordBox = createReactClass({
     }
   }
 });
-var RecordItemWeight = createReactClass({
+// The unit of record is day. => should change below
+var RecordItem = createReactClass({
   render: function() {
     return (
       <div className="record-item">
         <h2 className="record-item__user-id">{this.props.id}</h2>
+        <image className="record-item__image" src="{this.props.image}"/>
         <div className="record-item__weight">{this.props.weight}</div>
-      </div>
-    );
-  }
-});
-var RecordItemImage = createReactClass({
-  render: function() {
-    return (
-      <div className="record-item">
-        <h2 className="record-item__user-id">{this.props.id}</h2>
-        <image className="record-item__image" src="{this.props.weight}"/>
       </div>
     );
   }
