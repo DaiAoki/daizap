@@ -1,11 +1,9 @@
 var RecordBox = createReactClass({
   getInitialState: function() {
     //this function is called when create component
-    //return {records: this.props.records}; recordsが不要になる!!!
     return { records: [], isLoading: true };
   },
-  componentDidMount: function() {
-    //this function is called when first render
+  loadRecordsFromServer: function() {
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -17,6 +15,11 @@ var RecordBox = createReactClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
+  },
+  componentDidMount: function() {
+    //this function is called when first render
+    this.loadRecordsFromServer();
+    setInterval(this.loadRecordsFromServer, this.props.pollInterval);
   },
   handleRecordSubmit: function(record) {
     $.ajax({
@@ -69,15 +72,18 @@ var RecordItem = createReactClass({
 });
 var RecordForm = createReactClass({
   handleSubmit: function(event) {
+    //TODO: image submit
     event.preventDefault();
-    //var image = ReactDOM.findDOMNode(this.refs.image).value.trim();
+    var image = ReactDOM.findDOMNode(this.refs.image).value.trim();
     var weight = ReactDOM.findDOMNode(this.refs.weight).value.trim();
+    // I can write below.
     //var weight = this.refs.weight.value.trim();
-    if(!weight) {
+    if(!weight && !image) {
+      // Both of parameter is lack => reject
       return;
     }
-    this.props.onRecordSubmit({ weight: weight });
-    //ReactDOM.findDOMNode(this.refs.image).value = '';
+    this.props.onRecordSubmit({ image: image, weight: weight });
+    ReactDOM.findDOMNode(this.refs.image).value = '';
     ReactDOM.findDOMNode(this.refs.weight).value = '';
   },
   render: function() {
