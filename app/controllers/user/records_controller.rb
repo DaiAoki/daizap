@@ -5,27 +5,6 @@ class User::RecordsController < User::ApplicationController
   def index
   end
 
-  def new
-    # Countermeasure: 204 No Content
-    @hoge = Record.new
-  end
-
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def show
-  end
-
-  def destroy
-  end
-
-
 
   private
 
