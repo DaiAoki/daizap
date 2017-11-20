@@ -41,7 +41,7 @@ var RecordBox = createReactClass({
       //MEMO: Enable show content of object
       //alert(JSON.stringify(rec));
       return (
-        <RecordItem key={rec.id} user_id={rec.user_id} weight={rec.weight} image={rec.image}/>
+        <RecordItem key={rec.id} id={rec.id} user_id={rec.user_id} weight={rec.weight} image={rec.image}/>
       );
     });
     if(this.state.isLoading) {
@@ -60,12 +60,30 @@ var RecordBox = createReactClass({
   }
 });
 var RecordItem = createReactClass({
+  handleDelete: function(event) {
+    event.preventDefault();
+    var id = this.props.id
+    if(!id) {
+      return;
+    }
+    $.ajax({
+      url: '/api/v1/records/' + id,
+      type: 'delete',
+      cache: false,
+      success: function() {
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   render: function() {
     return (
       <div className="record-item">
         <h2 className="record-item__user-id">{this.props.user_id}</h2>
         <image className="record-item__image" src="{this.props.image}"/>
         <div className="record-item__weight">{this.props.weight}</div>
+        <button className="record-item__button" onClick={this.handleDelete}>Delete</button>
       </div>
     );
   }

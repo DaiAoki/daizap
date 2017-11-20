@@ -3,6 +3,11 @@ class User::RecordsController < User::ApplicationController
   before_action :set_current_user
 
   def index
+    # TODO: To investigate cause of below issue.
+    # Process below is unnecessary, only for countermeasure with 204 error.
+    # 一定時間待機するとうまくいくから、Rails5の中でマルチスレッドで動作していて、処理が早すぎてテンプレないと判断される??
+    # というより、ファイルに変更加えたらうまくいく。原因不明。
+    sleep(2)
   end
 
 
