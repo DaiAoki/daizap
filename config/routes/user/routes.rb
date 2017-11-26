@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :contributes, only: %w(index), trailing_slash: true do
     end
 
-    resources :records, only: %w(index), trailing_slash: true do
+    resources :records, only: %w(index), format: :html, trailing_slash: true do
     end
   end
 end
